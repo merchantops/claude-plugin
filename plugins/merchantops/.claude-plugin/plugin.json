@@ -1,0 +1,21 @@
+{
+  "name": "merchantops",
+  "displayName": "MerchantOps",
+  "description": "Onboard a MerchantOps customer end to end: crawl a site or read a spreadsheet, propose a property dictionary and product types, get human sign-off on a reviewable bundle, then load the catalog and prices. Includes a reference to MerchantOps' remote MCP server for conversational catalog reads.",
+  "version": "0.1.0",
+  "author": {
+    "name": "MerchantOps",
+    "url": "https://merchantops.ai"
+  },
+  "repository": "https://github.com/merchantops/claude-plugin",
+  "license": "Apache-2.0",
+  "keywords": [
+    "merchantops",
+    "onboarding",
+    "catalog",
+    "ecommerce",
+    "pricing",
+    "provisioning"
+  ],
+  "mcpServers": "./.mcp.json"
+}

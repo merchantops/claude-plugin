@@ -1,0 +1,15 @@
+{
+  "name": "merchantops",
+  "owner": {
+    "name": "MerchantOps",
+    "url": "https://merchantops.ai"
+  },
+  "description": "MerchantOps onboarding skills and catalog tools for Claude.",
+  "plugins": [
+    {
+      "name": "merchantops",
+      "source": "./plugins/merchantops",
+      "description": "Onboard a MerchantOps customer end to end: crawl or import a catalog, design a property dictionary, load the catalog and prices, and provision the org."
+    }
+  ]
+}
