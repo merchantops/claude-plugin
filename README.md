@@ -72,20 +72,47 @@ instructions to follow.
 `merchantops-sdk`). It's what every onboarding skill and slash command actually runs, and it's
 also usable entirely on its own from a terminal.
 
-**Current install: from source, for MerchantOps-supported customers.** `mo` is not on PyPI
-yet — publishing it as `uv tool install merchantops-cli` / `pipx install merchantops-cli` is
-the planned path, deferred deliberately so a published CLI never silently drifts out of sync
-with an incompatible API version. Until then, ask your MerchantOps contact for access to the
-engineering repository, then:
+**Prerequisites, by how deep you're going — pick the rung that matches you:**
+
+1. **Plugin only** (install path (a), above) — nothing to install locally.
+2. **The `mo` CLI** — Python 3.11 or newer, then `mo` itself:
+   - **Python 3.11+:** macOS — `brew install python@3.11` (or the
+     [python.org installer](https://www.python.org/downloads/)); Linux —
+     `apt install python3.11` (or your distro's package manager); Windows — the
+     [python.org installer](https://www.python.org/downloads/), checking "Add python.exe to
+     PATH" during setup.
+   - **Installing `mo` — not live yet; this is the planned, recommended path once
+     `merchantops-cli` is published to PyPI** (see below for today's actual install):
+     - **Recommended:** [`uv`](https://docs.astral.sh/uv/) — `uv tool install merchantops-cli`
+       — installs `mo` into its own isolated environment and puts it on `PATH` in one step,
+       with no virtualenv to manage by hand.
+     - **`pipx`** — `pipx install merchantops-cli`, the same isolation model as
+       `uv tool install`; run `pipx ensurepath` once if `mo` isn't found afterward (it adds
+       `~/.local/bin`, pipx's install target, to `PATH`).
+     - **A plain venv** — `python3 -m venv ~/.venvs/mo && ~/.venvs/mo/bin/pip install
+       merchantops-cli`, then either call `~/.venvs/mo/bin/mo` by its full path, or add
+       `~/.venvs/mo/bin` to `PATH` yourself (e.g. `export PATH="$HOME/.venvs/mo/bin:$PATH"` in
+       your shell profile) so plain `mo` resolves.
+3. **Site-crawl / competitive-analysis skills** (`merchantops-onboard-from-site` *and*
+   `merchantops-competitive-analysis`) — everything in step 2, plus Node.js and the
+   `firecrawl-cli` package, plus your own Firecrawl API key. No other skill needs either, and
+   `pip install merchantops-cli` on its own never pulls a Node toolchain — crawling runs
+   agent-side, under your own key and budget, never through MerchantOps infrastructure.
+4. **MCP only** (install path (d), below) — nothing to install locally.
+
+<!-- PYPI-FLIP:START state=not-published -->
+**Today's actual install: from source, for MerchantOps-supported customers.** `mo` is not on
+PyPI yet, so the `uv tool install` / `pipx install` / venv commands above don't resolve. Ask
+your MerchantOps contact for access to the engineering repository, then, from the clone's
+root:
 
 ```bash
+git clone git@github.com:merchantops/product-enricher.git
+cd product-enricher
 pip install -e ./merchantops-sdk -e ./merchantops-cli
 mo --help
 ```
-
-**What a shell needs:** Python ≥3.11 for `mo` itself. The site-crawl onboarding skill
-additionally needs Node.js and the `firecrawl-cli` package, plus your own Firecrawl API key —
-crawling runs agent-side, under your key and budget, never through MerchantOps infrastructure.
+<!-- PYPI-FLIP:END -->
 
 **Sign in:**
 ```bash

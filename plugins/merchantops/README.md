@@ -55,16 +55,25 @@ install, no file edit needed). It is not built or hosted by this plugin.
 
 ## Prerequisite: the `mo` CLI
 
-The onboarding skills and all four slash commands shell out to `mo`. **Current install: from
-source, for MerchantOps-supported customers** — `mo` is not on PyPI yet. Publishing it as
-`uv tool install merchantops-cli` / `pipx install merchantops-cli` is the planned path,
-deferred deliberately: a published CLI pinned against an incompatible API version is worse
-than no package at all.
+The onboarding skills and all four slash commands shell out to `mo`, a Python 3.11+
+command-line client. **Not live yet — the planned, recommended path once `merchantops-cli`
+publishes to PyPI:** `uv tool install merchantops-cli` (or `pipx install merchantops-cli`, or a
+plain venv + `pip install merchantops-cli`). The full install ladder — per-OS Python pointers,
+each method spelled out in full including how `mo` reaches `PATH`, and the Node.js /
+`firecrawl-cli` prerequisite the two site-crawl skills add — lives in the public
+`merchantops/claude-plugin` repository's root README, not duplicated here.
+
+<!-- PYPI-FLIP:START state=not-published -->
+**Today's actual install: from source, for MerchantOps-supported customers**, from the clone's
+root:
 
 ```bash
-pip install -e ./merchantops-sdk -e ./merchantops-cli   # from the MerchantOps engineering repo
+git clone git@github.com:merchantops/product-enricher.git
+cd product-enricher
+pip install -e ./merchantops-sdk -e ./merchantops-cli
 mo --help
 ```
+<!-- PYPI-FLIP:END -->
 
 If you don't have access to that repository, ask your MerchantOps contact. Once installed,
 sign in once per environment — `--env local|qa|prod` carries the API URL, the OAuth issuer
@@ -83,8 +92,8 @@ before a write when a permission is in doubt.
 **Don't need the plugin wrapper?** Every skill here is also a self-contained `SKILL.md`
 folder with no dependency on this plugin — see the public `merchantops/claude-plugin`
 repository's root README for the "skills only" install path (copy just the ones you want into
-another agent's skills directory). That same root README also covers running `mo` on its own
-(no skills, no plugin) and using MerchantOps' remote MCP server with no local install at all,
+another agent's skills directory), the full CLI prerequisites ladder, running `mo` on its own
+(no skills, no plugin), and using MerchantOps' remote MCP server with no local install at all,
 plus a "which surface can run what" table across Claude Code, Claude Desktop, Claude Web and
 other agent platforms.
 
