@@ -81,15 +81,14 @@ also usable entirely on its own from a terminal.
      `apt install python3.11` (or your distro's package manager); Windows — the
      [python.org installer](https://www.python.org/downloads/), checking "Add python.exe to
      PATH" during setup.
-   - **Installing `mo` — not live yet; this is the planned, recommended path once
-     `merchantops-cli` is published to PyPI** (see below for today's actual install):
+   - **Installing `mo`:**
      - **Recommended:** [`uv`](https://docs.astral.sh/uv/) — `uv tool install merchantops-cli`
        — installs `mo` into its own isolated environment and puts it on `PATH` in one step,
        with no virtualenv to manage by hand.
      - **`pipx`** — `pipx install merchantops-cli`, the same isolation model as
        `uv tool install`; run `pipx ensurepath` once if `mo` isn't found afterward (it adds
        `~/.local/bin`, pipx's install target, to `PATH`).
-     - **A plain venv** — `python3 -m venv ~/.venvs/mo && ~/.venvs/mo/bin/pip install
+     - **A plain venv** — `python3 -m venv ~/.venvs/mo`, then `~/.venvs/mo/bin/pip install
        merchantops-cli`, then either call `~/.venvs/mo/bin/mo` by its full path, or add
        `~/.venvs/mo/bin` to `PATH` yourself (e.g. `export PATH="$HOME/.venvs/mo/bin:$PATH"` in
        your shell profile) so plain `mo` resolves.
@@ -100,11 +99,10 @@ also usable entirely on its own from a terminal.
    agent-side, under your own key and budget, never through MerchantOps infrastructure.
 4. **MCP only** (install path (d), below) — nothing to install locally.
 
-<!-- PYPI-FLIP:START state=not-published -->
-**Today's actual install: from source, for MerchantOps-supported customers.** `mo` is not on
-PyPI yet, so the `uv tool install` / `pipx install` / venv commands above don't resolve. Ask
-your MerchantOps contact for access to the engineering repository, then, from the clone's
-root:
+<!-- PYPI-FLIP:START state=published -->
+**Installing from source instead** — for MerchantOps-supported customers or contributors who
+want an editable checkout rather than the PyPI package above: ask your MerchantOps contact for
+access to the engineering repository, then, from the clone's root:
 
 ```bash
 git clone git@github.com:merchantops/product-enricher.git

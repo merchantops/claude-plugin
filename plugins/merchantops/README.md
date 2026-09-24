@@ -56,16 +56,16 @@ install, no file edit needed). It is not built or hosted by this plugin.
 ## Prerequisite: the `mo` CLI
 
 The onboarding skills and all four slash commands shell out to `mo`, a Python 3.11+
-command-line client. **Not live yet — the planned, recommended path once `merchantops-cli`
-publishes to PyPI:** `uv tool install merchantops-cli` (or `pipx install merchantops-cli`, or a
-plain venv + `pip install merchantops-cli`). The full install ladder — per-OS Python pointers,
-each method spelled out in full including how `mo` reaches `PATH`, and the Node.js /
-`firecrawl-cli` prerequisite the two site-crawl skills add — lives in the public
-`merchantops/claude-plugin` repository's root README, not duplicated here.
+command-line client, published on PyPI as `merchantops-cli`. **Recommended:**
+`uv tool install merchantops-cli` (or `pipx install merchantops-cli`, or a plain venv +
+`pip install merchantops-cli`). The full install ladder — per-OS Python pointers, each method
+spelled out in full including how `mo` reaches `PATH`, and the Node.js / `firecrawl-cli`
+prerequisite the two site-crawl skills add — lives in the public `merchantops/claude-plugin`
+repository's root README, not duplicated here.
 
-<!-- PYPI-FLIP:START state=not-published -->
-**Today's actual install: from source, for MerchantOps-supported customers**, from the clone's
-root:
+<!-- PYPI-FLIP:START state=published -->
+**Installing from source instead** — for MerchantOps-supported customers or contributors who
+want an editable checkout, from the clone's root:
 
 ```bash
 git clone git@github.com:merchantops/product-enricher.git
