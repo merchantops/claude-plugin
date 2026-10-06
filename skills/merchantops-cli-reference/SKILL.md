@@ -29,6 +29,8 @@ There is no `mo products`, `mo product-types` or `mo crawl` group. Those older s
 Catalog reads live under `mo api <tag> <get-operation>`; catalog writes live under the curated
 `mo import` and `mo provision` commands.
 
+To see when, where and by whom something was published, use `mo api products get-publish-history <KEY>` (one row per publish attempt, add `--include-failed` for failures) and `mo api pricing get-price-publish-status-by-product <PRODUCT_KEY>` for price publishes.
+
 ## Start every session the same way
 
 1. `mo onboarding status` — returns `{property_definitions:{total,system,common}, product_types,
